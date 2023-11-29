@@ -29,6 +29,6 @@ namespace PustokSliderCRUD.Models
         [NotMapped]
         public IFormFile? BookHower { get; set; }
         [NotMapped]
-        public List<int> BookImageIds { get; set; }
+        public List<int>? BookImageIds { get; set; }
     }
 }

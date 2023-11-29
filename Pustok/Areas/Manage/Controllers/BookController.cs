@@ -96,7 +96,7 @@ namespace Pustok.Areas.Manage.Controllers
 
                 fileName = Guid.NewGuid().ToString() + fileName;
 
-                string path = "C:\\Users\\Mehemmed\\Desktop\\CRUD-class-practice\\Pustok\\wwwroot\\uploads\\books\\" + fileName;
+                string path = "C:\\Users\\II Novbe\\Desktop\\Pustok-File-\\Pustok\\wwwroot\\uploads\\books\\" + fileName;
                 using (FileStream fileStream = new FileStream(path, FileMode.Create))
                 {
                     book.BookPoster.CopyTo(fileStream);
@@ -139,7 +139,7 @@ namespace Pustok.Areas.Manage.Controllers
 
                 fileName = Guid.NewGuid().ToString() + fileName;
 
-                string path = "C:\\Users\\Mehemmed\\Desktop\\CRUD-class-practice\\Pustok\\wwwroot\\uploads\\books\\" + fileName;
+                string path = "C:\\Users\\II Novbe\\Desktop\\Pustok-File-\\Pustok\\wwwroot\\uploads\\books\\" + fileName;
                 using (FileStream fileStream = new FileStream(path, FileMode.Create))
                 {
                     book.BookHower.CopyTo(fileStream);
@@ -181,7 +181,7 @@ namespace Pustok.Areas.Manage.Controllers
 
                     fileName = Guid.NewGuid().ToString() + fileName;
 
-                    string path = "C:\\Users\\Mehemmed\\Desktop\\CRUD-class-practice\\Pustok\\wwwroot\\uploads\\books\\" + fileName;
+                    string path = "C:\\Users\\II Novbe\\Desktop\\Pustok-File-\\Pustok\\wwwroot\\uploads\\books\\" + fileName;
                     using (FileStream fileStream = new FileStream(path, FileMode.Create))
                     {
                         img.CopyTo(fileStream);
@@ -241,10 +241,10 @@ namespace Pustok.Areas.Manage.Controllers
                 return View();
             }
 
-            existBook.BookTags.RemoveAll(bt => book.TagIds == null || !book.TagIds.Contains(bt.TagId));
 
             if (book.TagIds != null)
             {
+                existBook.BookTags.RemoveAll(bt => book.TagIds == null || !book.TagIds.Contains(bt.TagId));
                 foreach (var tagId in book.TagIds.Where(tagId => !existBook.BookTags.Any(bt => bt.TagId == tagId)))
                 {
                     BookTag bookTag = new BookTag
@@ -277,7 +277,7 @@ namespace Pustok.Areas.Manage.Controllers
 
                 fileName = Guid.NewGuid().ToString() + fileName;
 
-                string path = "C:\\Users\\Mehemmed\\Desktop\\CRUD-class-practice\\Pustok\\wwwroot\\uploads\\books\\" + fileName;
+                string path = "C:\\Users\\II Novbe\\Desktop\\Pustok-File-\\Pustok\\wwwroot\\uploads\\books\\" + fileName;
                 using (FileStream fileStream = new FileStream(path, FileMode.Create))
                 {
                     book.BookPoster.CopyTo(fileStream);
@@ -320,7 +320,7 @@ namespace Pustok.Areas.Manage.Controllers
 
                 fileName = Guid.NewGuid().ToString() + fileName;
 
-                string path = "C:\\Users\\Mehemmed\\Desktop\\CRUD-class-practice\\Pustok\\wwwroot\\uploads\\books\\" + fileName;
+                string path = "C:\\Users\\II Novbe\\Desktop\\Pustok-File-\\Pustok\\wwwroot\\uploads\\books\\" + fileName;
                 using (FileStream fileStream = new FileStream(path, FileMode.Create))
                 {
                     book.BookHower.CopyTo(fileStream);
@@ -339,9 +339,13 @@ namespace Pustok.Areas.Manage.Controllers
                 ModelState.AddModelError("BookHower", "image is required");
             }
 
-            existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == null);
+            
             if (book.ImageFiles != null)
             {
+                if (book.BookImages != null )
+                {
+                    existBook.BookImages.RemoveAll(bi => !book.BookImageIds.Contains(bi.Id) && bi.isPoster == null);
+                }
                 foreach (var img in book.ImageFiles)
                 {
                     string fileName = img.FileName;
@@ -362,7 +366,7 @@ namespace Pustok.Areas.Manage.Controllers
 
                     fileName = Guid.NewGuid().ToString() + fileName;
 
-                    string path = "C:\\Users\\Mehemmed\\Desktop\\CRUD-class-practice\\Pustok\\wwwroot\\uploads\\books\\" + fileName;
+                    string path = "C:\\Users\\II Novbe\\Desktop\\Pustok-File-\\Pustok\\wwwroot\\uploads\\books\\" + fileName;
                     using (FileStream fileStream = new FileStream(path, FileMode.Create))
                     {
                         img.CopyTo(fileStream);
